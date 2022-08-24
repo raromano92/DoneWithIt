@@ -24,22 +24,30 @@ import AppButton from "./app/components/AppButton"
 
 export default function App() {
 	return (
-		<View
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				alignItems: "center",
-			}}
-		>
-			<AppButton title="Login" />
-			{/* <AppText>I love React Native!</AppText>
+		<WelcomeScreen />
+		// <View
+		// 	style={{
+		// 		flex: 1,
+		// 		justifyContent: "center",
+		// 		alignItems: "center",
+		// 	}}
+		// >
+	)
+	{
+		/* <AppButton
+				title="Login"
+				onPress={() => console.log("Tapped")}
+			/> */
+	}
+	{
+		/* <AppText>I love React Native!</AppText>
 			<MaterialCommunityIcons
 				name="email"
 				size={80}
 				color="goldenrod"
-			/> */}
-		</View>
-	)
+			/> */
+	}
+	// </View>
 }
 
 const styles = StyleSheet.create({
