@@ -13,6 +13,7 @@ import {
 	Button,
 	Alert,
 	TextInput,
+	Switch,
 } from "react-native"
 import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
@@ -33,18 +34,28 @@ import AccountScreen from "./app/screens/AccountScreen"
 import ListingsScreen from "./app/screens/ListingsScreen"
 import AppTextInput from "./app/components/AppTextInput"
 import colors from "./app/config/colors"
+import AppPicker from "./app/components/AppPicker"
 
 export default function App() {
-	const [firstName, setFirstName] = useState("")
+	const [isNew, setIsNew] = useState(false)
+
 	return (
 		<Screen>
+			<AppPicker
+				icon="apps"
+				placeholder="Category"
+			/>
 			<AppTextInput
-				placeholder="Username"
 				icon="email"
-				underlineColorAndroid={colors.light}
+				placeholder="Email"
 			/>
 		</Screen>
 	)
+
+	// <Switch
+	// 			value={isNew}
+	// 			onValueChange={(newValue) => setIsNew(newValue)}
+	// 		/>
 
 	{
 		/* <Text>{firstName}</Text>
