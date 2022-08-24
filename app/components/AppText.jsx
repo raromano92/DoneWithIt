@@ -1,8 +1,8 @@
 import React from "react"
 import { Text, StyleSheet, Platform } from "react-native"
 
-export default function AppText({ children }) {
-	return <Text style={styles.text}>{children}</Text>
+export default function AppText({ children, style }) {
+	return <Text style={[styles.text, style]}>{children}</Text>
 }
 
 const styles = StyleSheet.create({
@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
 		// fontSize: 32,
 		// color: "blue",
 		// fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		color: "tomato",
+		color: "#000",
 		...Platform.select({
 			ios: {
 				fontSize: 20,
 				fontFamily: "Avenir",
 			},
 			android: {
-				fontSize: 34,
+				fontSize: 24,
 				fontFamily: "Roboto",
 			},
 		}),
