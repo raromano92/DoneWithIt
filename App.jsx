@@ -31,22 +31,36 @@ import Icon from "./app/components/Icon"
 import ListItem from "./app/components/ListItem"
 import AccountScreen from "./app/screens/AccountScreen"
 import ListingsScreen from "./app/screens/ListingsScreen"
+import AppTextInput from "./app/components/AppTextInput"
+import colors from "./app/config/colors"
 
 export default function App() {
 	const [firstName, setFirstName] = useState("")
 	return (
 		<Screen>
-			<Text>{firstName}</Text>
-			<TextInput
-				onChangeText={(text) => setFirstName(text)}
-				placeholder="First Name"
-				style={{
-					borderBottomColor: "#ccc",
-					borderBottomWidth: 1,
-				}}
+			<AppTextInput
+				placeholder="Username"
+				icon="email"
+				underlineColorAndroid={colors.light}
 			/>
 		</Screen>
 	)
+
+	{
+		/* <Text>{firstName}</Text>
+	<TextInput
+		keyboardType="default"
+		clearButtonMode="always" // iOS only
+		secureTextEntry={true} // for passwords
+		maxLength={50}
+		onChangeText={(text) => setFirstName(text)}
+		placeholder="First Name"
+		style={{
+			borderBottomColor: "#ccc",
+			borderBottomWidth: 1,
+		}}
+	/> */
+	}
 
 	{
 		/* <AppButton
