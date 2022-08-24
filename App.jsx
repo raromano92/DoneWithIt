@@ -12,9 +12,11 @@ import {
 	SafeAreaView,
 	Button,
 	Alert,
+	TextInput,
 } from "react-native"
 import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { useState } from "react"
 
 import WelcomeScreen from "./app/screens/WelcomeScreen"
 import ViewImageScreen from "./app/screens/ViewImageScreen"
@@ -31,7 +33,20 @@ import AccountScreen from "./app/screens/AccountScreen"
 import ListingsScreen from "./app/screens/ListingsScreen"
 
 export default function App() {
-	return <ListingsScreen />
+	const [firstName, setFirstName] = useState("")
+	return (
+		<Screen>
+			<Text>{firstName}</Text>
+			<TextInput
+				onChangeText={(text) => setFirstName(text)}
+				placeholder="First Name"
+				style={{
+					borderBottomColor: "#ccc",
+					borderBottomWidth: 1,
+				}}
+			/>
+		</Screen>
+	)
 
 	{
 		/* <AppButton
