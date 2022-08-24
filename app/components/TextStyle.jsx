@@ -12,7 +12,7 @@ export default function TextStyle() {
 		>
 			<Text
 				style={{
-					fontSize: 40,
+					fontSize: 20,
 					fontFamily: "Roboto",
 					fontStyle: "italic",
 					fontWeight: "900",
