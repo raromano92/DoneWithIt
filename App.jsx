@@ -14,11 +14,32 @@ import {
 	Alert,
 } from "react-native"
 import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks"
+import { MaterialCommunityIcons } from "@expo/vector-icons"
+
 import WelcomeScreen from "./app/screens/WelcomeScreen"
 import ViewImageScreen from "./app/screens/ViewImageScreen"
+import TextStyle from "./app/components/TextStyle"
+import AppText from "./app/components/AppText"
+import AppButton from "./app/components/AppButton"
 
 export default function App() {
-	return <ViewImageScreen />
+	return (
+		<View
+			style={{
+				flex: 1,
+				justifyContent: "center",
+				alignItems: "center",
+			}}
+		>
+			<AppButton title="Login" />
+			{/* <AppText>I love React Native!</AppText>
+			<MaterialCommunityIcons
+				name="email"
+				size={80}
+				color="goldenrod"
+			/> */}
+		</View>
+	)
 }
 
 const styles = StyleSheet.create({
