@@ -42,7 +42,9 @@ export default function MessagesScreen() {
 						subTitle={item.description}
 						image={item.image}
 						onPress={() => console.log("Message selected", item)}
-						renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item)} />}
+						renderRightActions={() => (
+							<ListItemDeleteAction onPress={() => handleDelete(item)} />
+						)}
 					/>
 				)}
 				ItemSeparatorComponent={ListItemSeparator}

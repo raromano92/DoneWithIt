@@ -27,11 +27,7 @@ export default function ListingsScreen() {
 				data={listings}
 				keyExtractor={(listing) => listing.id.toString()}
 				renderItem={({ item }) => (
-					<Card
-						title={item.title}
-						subTitle={"$" + item.price}
-						image={item.image}
-					/>
+					<Card title={item.title} subTitle={"$" + item.price} image={item.image} />
 				)}
 			/>
 		</Screen>

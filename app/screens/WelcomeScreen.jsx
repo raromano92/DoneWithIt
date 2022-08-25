@@ -10,18 +10,12 @@ export default function WelcomeScreen() {
 			source={require("../assets/background.jpg")}
 		>
 			<View style={styles.logoContainer}>
-				<Image
-					style={styles.logo}
-					source={require("../assets/logo-red.png")}
-				/>
+				<Image style={styles.logo} source={require("../assets/logo-red.png")} />
 				<Text style={styles.tagline}>Sell What You Don't Need</Text>
 			</View>
 			<View style={styles.buttonsContainer}>
 				<AppButton title="Login" />
-				<AppButton
-					title="Register"
-					color="secondary"
-				/>
+				<AppButton title="Register" color="secondary" />
 			</View>
 			{/* <View style={styles.registerButton}></View> */}
 			{/* <View style={styles.loginButton}></View> */}
