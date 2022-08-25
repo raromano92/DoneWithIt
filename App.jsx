@@ -22,7 +22,7 @@ import { useState } from "react"
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen"
 
 import MessagesScreen from "./app/screens/MessagesScreen"
-import ListItem from "./app/components/lists/ListItem"
+import ListingEditScreen from "./app/screens/ListingEditScreen"
 
 const categories = [
 	{ label: "Furniture", value: 1 },
@@ -34,7 +34,7 @@ export default function App() {
 	const [isNew, setIsNew] = useState(false)
 	const [category, setCategory] = useState(categories[0])
 
-	return <MessagesScreen />
+	return <ListingEditScreen />
 	// <Screen>
 	// 	<AppPicker
 	// 		selectedItem={category}

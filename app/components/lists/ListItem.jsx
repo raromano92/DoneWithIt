@@ -28,34 +28,13 @@ export default function ListItem({ title, subTitle, image, IconComponent, onPres
 								style={styles.title}
 								numberOfLines={1}
 							>
-								{title} Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-								excepturi mollitia pariatur rerum animi laboriosam? Quia modi consequatur rerum?
-								Pariatur nobis obcaecati perspiciatis saepe maiores minima. Necessitatibus odit
-								aspernatur maxime delectus facere inventore quod, autem corporis quam non
-								doloremque! Sapiente ratione id nihil nisi? Quo sunt architecto dolores
-								assumenda soluta tempora quaerat ex laudantium repellendus fugit, illo, odio
-								cupiditate itaque rem eius sapiente delectus alias qui a harum rerum
-								exercitationem incidunt aliquam? Fugiat rerum consequatur aperiam perspiciatis
-								quam aliquid voluptatibus exercitationem iste placeat ad cum ipsum at,
-								dignissimos dolores incidunt mollitia. Asperiores nobis non dolore incidunt!
-								Beatae ratione accusamus aspernatur.
+								{title}
 							</AppText>
 							{subTitle && (
 								<AppText
 									style={styles.subTitle}
 									numberOfLines={2}
 								>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda odit,
-									quisquam fuga doloribus voluptate officia incidunt nihil ipsa possimus est
-									deserunt, voluptatem dolorum porro cumque maiores voluptatum sed sit
-									perferendis consequuntur, tempora labore ad numquam delectus saepe.
-									Cupiditate, nobis. Laudantium ipsa quos autem, minus commodi sapiente
-									molestiae error reprehenderit provident. Alias numquam nisi assumenda quod
-									eveniet mollitia animi itaque ullam earum atque culpa rem, ut veniam
-									inventore quam aut. Alias iusto optio assumenda voluptatibus soluta
-									consequatur libero id ut, veniam cumque cum, fugiat non eum accusantium,
-									blanditiis quibusdam. Sit ipsum esse aliquam ut aut. Illum aliquid
-									praesentium laudantium reiciendis laborum.
 									{subTitle}
 								</AppText>
 							)}
