@@ -36,6 +36,7 @@ import AppTextInput from "./app/components/AppTextInput"
 import colors from "./app/config/colors"
 import AppPicker from "./app/components/AppPicker"
 import LoginScreen from "./app/screens/LoginScreen"
+import RegisterScreen from "./app/screens/RegisterScreen"
 
 const categories = [
 	{ label: "Furniture", value: 1 },
@@ -47,7 +48,7 @@ export default function App() {
 	const [isNew, setIsNew] = useState(false)
 	const [category, setCategory] = useState(categories[0])
 
-	return <LoginScreen />
+	return <RegisterScreen />
 	// <Screen>
 	// 	<AppPicker
 	// 		selectedItem={category}
