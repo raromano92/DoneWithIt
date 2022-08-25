@@ -17,6 +17,7 @@ export default function AppTextInput({ icon, ...otherProps }) {
 			)}
 			<TextInput
 				underlineColorAndroid="transparent"
+				placeholderTextColor={defaultStyles.colors.medium}
 				style={defaultStyles.text}
 				{...otherProps}
 			/>

@@ -1,6 +1,6 @@
 {
 	"react-native.packager.port": 19000,
 	"prettier.bracketSameLine": false,
-	"prettier.singleAttributePerLine": false,
-	"prettier.printWidth": 100
+	"prettier.singleAttributePerLine": true,
+	"prettier.printWidth": 120
 }
