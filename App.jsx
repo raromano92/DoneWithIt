@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar"
+import { StatusBar } from 'expo-status-bar'
 import {
 	Dimensions,
 	StyleSheet,
@@ -14,146 +14,36 @@ import {
 	Alert,
 	TextInput,
 	Switch,
-} from "react-native"
-import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
-import { useState } from "react"
+} from 'react-native'
+import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useState, useEffect } from 'react'
+import { Permission } from 'react-native'
+import * as ImagePicker from 'expo-image-picker'
+import * as Permissions from 'expo-permissions'
 
-import ListingDetailsScreen from "./app/screens/ListingDetailsScreen"
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
 
-import MessagesScreen from "./app/screens/MessagesScreen"
-import ListingEditScreen from "./app/screens/ListingEditScreen"
+import MessagesScreen from './app/screens/MessagesScreen'
+import ListingEditScreen from './app/screens/ListingEditScreen'
+import Screen from './app/components/Screen'
+import ImageInput from './app/components/ImageInput'
 
 const categories = [
-	{ label: "Furniture", value: 1 },
-	{ label: "Clothing", value: 2 },
-	{ label: "Cameras", value: 3 },
+	{ label: 'Furniture', value: 1 },
+	{ label: 'Clothing', value: 2 },
+	{ label: 'Cameras', value: 3 },
 ]
 
 export default function App() {
-	const [isNew, setIsNew] = useState(false)
-	const [category, setCategory] = useState(categories[0])
+	const [imageUri, setImageUri] = useState()
 
-	return <ListingEditScreen />
-	// <Screen>
-	// 	<AppPicker
-	// 		selectedItem={category}
-	// 		onSelectItem={(item) => setCategory(item)}
-	// 		items={categories}
-	// 		icon="apps"
-	// 		placeholder="Category"
-	// 	/>
-	// 	<AppTextInput
-	// 		icon="email"
-	// 		placeholder="Email"
-	// 	/>
-	// </Screen>
-
-	// <Switch
-	// 			value={isNew}
-	// 			onValueChange={(newValue) => setIsNew(newValue)}
-	// 		/>
-
-	{
-		/* <Text>{firstName}</Text>
-	<TextInput
-		keyboardType="default"
-		clearButtonMode="always" // iOS only
-		secureTextEntry={true} // for passwords
-		maxLength={50}
-		onChangeText={(text) => setFirstName(text)}
-		placeholder="First Name"
-		style={{
-			borderBottomColor: "#ccc",
-			borderBottomWidth: 1,
-		}}
-	/> */
-	}
-
-	{
-		/* <AppButton
-				title="Login"
-				onPress={() => console.log("Tapped")}
-			/> */
-	}
-	{
-		/* <AppText>I love React Native!</AppText>
-			<MaterialCommunityIcons
-				name="email"
-				size={80}
-				color="goldenrod"
-			/> */
-	}
-	// </View>
+	return (
+		<Screen>
+			<ImageInput
+				imageUri={imageUri}
+				onChangeImage={(uri) => setImageUri(uri)}
+			/>
+		</Screen>
+	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-		fontWeight: "bold",
-	},
-
-	setFontSizeOne: {
-		fontSize: 15, // Define font size here in Pixels
-	},
-	setFontSizeTwo: {
-		fontSize: 40, // Define font size here in Pixels
-	},
-})
-
-// console.log(Dimensions.get("screen"))
-// console.log(useDimensions())
-// console.log(useDeviceOrientation())
-// const { landscape } = useDeviceOrientation()
-
-// const handlePress = () => console.log("Text pressed")
-
-// return (
-// 	<SafeAreaView style={styles.container}>
-// 		<Button
-// 			color="green"
-// 			title="Click Me"
-// 			onPress={() =>
-// 				Alert.alert("My Title", "My message", [
-// 					{ text: "Yes", onPress: () => console.log("Yes") },
-// 					{ text: "No", onPress: () => console.log("No") },
-// 				])
-// 			}
-// 		/>
-
-// 		<Text
-// 			numberOfLines={1}
-// 			onPress={handlePress}
-// 			style={styles.setFontSizeTwo}>
-// 			abcdefg
-// 		</Text>
-// 		<TouchableHighlight onPress={() => console.log("Tapped picture")}>
-// 			<Image
-// 				blurRadius={0}
-// 				fadeDuration={1000}
-// 				source={{ width: 200, height: 300, uri: "https://picsum.photos/id/237/200/300" }}
-// 			/>
-// 		</TouchableHighlight>
-// 		<TouchableNativeFeedback>
-// 			<View style={{ width: 200, height: 70, backgroundColor: "dodgerblue" }}></View>
-// 		</TouchableNativeFeedback>
-// 		<StatusBar style="auto" />
-// 		<View
-// 			style={{
-// 				backgroundColor: "red",
-// 				width: "30%",
-// 				height: landscape ? "10%" : "20%",
-// 				flex: 1,
-// 			}}>
-// 			<View
-// 				style={{
-// 					backgroundColor: "yellow",
-// 					flex: 1,
-// 					flexDirection: "column",
-// 					width: "40%",
-// 				}}></View>
-// 		</View>
-// 	</SafeAreaView>
