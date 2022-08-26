@@ -1,24 +1,24 @@
-import React from "react"
-import { StyleSheet, View, FlatList } from "react-native"
+import React from 'react'
+import { StyleSheet, View, FlatList } from 'react-native'
 
-import ListItem from "../components/ListItem"
-import Screen from "../components/Screen"
-import colors from "../config/colors"
-import Icon from "../components/Icon"
-import ListItemSeparator from "../components/ListItemSeparator"
+import ListItem from '../components/lists/ListItem'
+import Screen from '../components/Screen'
+import colors from '../config/colors'
+import Icon from '../components/Icon'
+import ListItemSeparator from '../components/lists/ListItemSeparator'
 
 const menuItems = [
 	{
-		title: "My Listings",
+		title: 'My Listings',
 		icon: {
-			name: "format-list-bulleted",
+			name: 'format-list-bulleted',
 			backgroundColor: colors.primary,
 		},
 	},
 	{
-		title: "My Messages",
+		title: 'My Messages',
 		icon: {
-			name: "email",
+			name: 'email',
 			backgroundColor: colors.secondary,
 		},
 	},
@@ -28,9 +28,9 @@ export default function AccountScreen() {
 	return (
 		<Screen style={styles.screen}>
 			<ListItem
-				title="Mosh Hamedani"
-				subTitle="programmingwithmosh@gmail.com"
-				image={require("../assets/mosh.jpg")}
+				title='Mosh Hamedani'
+				subTitle='programmingwithmosh@gmail.com'
+				image={require('../assets/mosh.jpg')}
 			/>
 
 			<View style={styles.container}>
@@ -52,8 +52,8 @@ export default function AccountScreen() {
 				/>
 			</View>
 			<ListItem
-				title="Log Out"
-				IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+				title='Log Out'
+				IconComponent={<Icon name='logout' backgroundColor='#ffe66d' />}
 			/>
 		</Screen>
 	)

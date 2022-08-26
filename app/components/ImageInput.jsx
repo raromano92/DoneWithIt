@@ -1,12 +1,11 @@
-import React from 'react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet, Image, TouchableWithoutFeedback, Alert } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 
 import colors from '../config/colors'
 
-export default function ImageInput({ imageUri, onChangeImage }) {
+function ImageInput({ imageUri, onChangeImage }) {
 	useEffect(() => {
 		requestPermission()
 	}, [])
@@ -17,7 +16,7 @@ export default function ImageInput({ imageUri, onChangeImage }) {
 	}
 
 	const handlePress = () => {
-		if (!imageUri) selectImage()
+		if (!imageUri) selectImage();
 		else
 			Alert.alert('Delete', 'Are you sure you want to delete this image?', [
 				{ text: 'Yes', onPress: () => onChangeImage(null) },
@@ -36,6 +35,7 @@ export default function ImageInput({ imageUri, onChangeImage }) {
 			console.log('Error reading an image', error)
 		}
 	}
+	
 
 	return (
 		<TouchableWithoutFeedback onPress={handlePress}>
@@ -48,10 +48,7 @@ export default function ImageInput({ imageUri, onChangeImage }) {
 					/>
 				)}
 				{imageUri && (
-					<Image
-						source={{ uri: imageUri }}
-						style={styles.image}
-					/>
+					<Image source={{ uri: imageUri }} style={styles.image} />
 				)}
 			</View>
 		</TouchableWithoutFeedback>
@@ -65,11 +62,14 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		height: 100,
 		justifyContent: 'center',
+		marginVertical: 10,
 		overflow: 'hidden',
 		width: 100,
 	},
 	image: {
-		width: '100%',
 		height: '100%',
+		width: '100%',
 	},
 })
+
+export default ImageInput
