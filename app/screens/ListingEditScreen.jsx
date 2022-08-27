@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
-import * as Yup from 'yup'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import * as Yup from 'yup';
 
-import CategoryPickerItem from '../components/CategoryPickerItem'
-import useLocation from '../hooks/useLocation'
+import CategoryPickerItem from '../components/CategoryPickerItem';
+import useLocation from '../hooks/useLocation';
+import listingsApi from '../api/listings';
 
 import {
 	AppForm as Form,
 	AppFormField as FormField,
 	AppFormPicker as Picker,
 	SubmitButton,
-} from '../components/forms'
-import FormImagePicker from '../components/forms/AppFormImagePicker'
-import Screen from '../components/Screen'
+} from '../components/forms';
+import FormImagePicker from '../components/forms/AppFormImagePicker';
+import Screen from '../components/Screen';
+import UploadScreen from './UploadScreen';
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label('Title'),
@@ -20,7 +22,7 @@ const validationSchema = Yup.object().shape({
 	description: Yup.string().label('Description'),
 	category: Yup.object().required().nullable().label('Category'),
 	images: Yup.array().min(1, 'Please select at least one image.'),
-})
+});
 
 const categories = [
 	{
@@ -77,13 +79,28 @@ const categories = [
 		label: 'Other',
 		value: 9,
 	},
-]
+];
 
 function ListingEditScreen() {
-	const location = useLocation()
+	const location = useLocation();
+	const [uploadVisible, setUploadVisible] = useState(false);
+	const [progress, setProgress] = useState(0);
+
+	const handleSubmit = async (listing) => {
+		setUploadVisible(true);
+		const result = await listingsApi.addListing(
+			{ ...listing, location },
+			(progress) => setProgress(progress)
+		);
+		setUploadVisible(false);
+
+		if (!result.ok) return alert('Could not save the listing.');
+		alert('Success');
+	};
 
 	return (
 		<Screen style={styles.container}>
+			<UploadScreen progress={progress} visible={uploadVisible} />
 			<Form
 				initialValues={{
 					title: '',
@@ -92,10 +109,14 @@ function ListingEditScreen() {
 					category: null,
 					images: [],
 				}}
-				onSubmit={(values) => console.log(location)}
+				onSubmit={handleSubmit}
 				validationSchema={validationSchema}>
 				<FormImagePicker name='images' />
-				<FormField maxLength={255} name='title' placeholder='Title' />
+				<FormField
+					maxLength={255}
+					name='title'
+					placeholder='Title'
+				/>
 				<FormField
 					keyboardType='numeric'
 					maxLength={8}
@@ -121,12 +142,12 @@ function ListingEditScreen() {
 				<SubmitButton title='Post' />
 			</Form>
 		</Screen>
-	)
+	);
 }
 
 const styles = StyleSheet.create({
 	container: {
 		padding: 10,
 	},
-})
-export default ListingEditScreen
+});
+export default ListingEditScreen;
