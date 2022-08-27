@@ -1,46 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { FlatList, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react';
+import { FlatList, StyleSheet } from 'react-native';
 
-import Card from '../components/Card'
-import Screen from '../components/Screen'
-import colors from '../config/colors'
-import routes from '../navigation/routes'
-import listingsApi from '../api/listings'
-import AppText from '../components/AppText'
-import AppButton from '../components/AppButton'
-import ActivityIndicator from '../components/ActivityIndicator'
+import Card from '../components/Card';
+import Screen from '../components/Screen';
+import colors from '../config/colors';
+import routes from '../navigation/routes';
+import listingsApi from '../api/listings';
+import AppText from '../components/AppText';
+import AppButton from '../components/AppButton';
+import ActivityIndicator from '../components/ActivityIndicator';
+import useApi from '../hooks/useApi';
 
 export default function ListingsScreen({ navigation }) {
-	const [listings, setListings] = useState([])
-	const [error, setError] = useState(false)
-	const [loading, setLoading] = useState(false)
+	const getListingsApi = useApi(listingsApi.getListings);
 
 	useEffect(() => {
-		loadListings()
-	}, [])
-
-	const loadListings = async () => {
-		setLoading(true)
-		const response = await listingsApi.getListings()
-		setLoading(false)
-
-		if (!response.ok) return setError(true)
-
-		setError(false)
-		setListings(response.data)
-	}
+		getListingsApi.request();
+	}, []);
 
 	return (
 		<Screen style={styles.screen}>
-			{error && (
+			{getListingsApi.error && (
 				<>
 					<AppText>Couldn't retrieve the listings.</AppText>
-					<AppButton title='Retry' onPress={loadListings} />
+					<AppButton title='Retry' onPress={getListingsApi.request} />
 				</>
 			)}
-			<ActivityIndicator visible={loading} />
-			{/* <FlatList
-				data={listings}
+			<ActivityIndicator visible={getListingsApi.loading} />
+			<FlatList
+				data={getListingsApi.data}
 				keyExtractor={(listing) => listing.id.toString()}
 				renderItem={({ item }) => (
 					<Card
@@ -52,9 +40,9 @@ export default function ListingsScreen({ navigation }) {
 						}
 					/>
 				)}
-			/> */}
+			/>
 		</Screen>
-	)
+	);
 }
 
 const styles = StyleSheet.create({
@@ -62,4 +50,4 @@ const styles = StyleSheet.create({
 		padding: 20,
 		backgroundColor: colors.light,
 	},
-})
+});
