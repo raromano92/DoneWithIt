@@ -28,9 +28,7 @@ const AppNavigator = () => (
 			options={({ navigation }) => ({
 				tabBarButton: () => (
 					<NewListingButton
-						onPress={() =>
-							navigation.navigate(routes.ListingEditScreen)
-						}
+						onPress={() => navigation.navigate(routes.LISTING_EDIT)}
 					/>
 				),
 				tabBarIcon: ({ color, size }) => (

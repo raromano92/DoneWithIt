@@ -22,7 +22,7 @@ const menuItems = [
 			name: 'email',
 			backgroundColor: colors.secondary,
 		},
-		targetScreen: routes.MESSSAGES,
+		targetScreen: routes.MESSAGES,
 	},
 ]
 
