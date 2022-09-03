@@ -1,16 +1,22 @@
-import React from 'react'
-import { Image, View, StyleSheet } from 'react-native'
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Image } from 'react-native-expo-image-cache';
 
-import AppText from '../components/AppText'
-import ListItem from '../components/lists/ListItem.jsx'
-import colors from '../config/colors'
+import AppText from '../components/AppText';
+import ListItem from '../components/lists/ListItem.jsx';
+import colors from '../config/colors';
 
 export default function ListingDetailsScreen({ route }) {
-	const listing = route.params
+	const listing = route.params;
 
 	return (
 		<View>
-			<Image style={styles.image} source={{ uri: listing.images[0].url }} />
+			<Image
+				tint='light'
+				style={styles.image}
+				preview={{ uri: listing.images[0].thumbnailUrl }}
+				uri={listing.images[0].url}
+			/>
 			<View style={styles.detailsContainer}>
 				<AppText style={styles.title}>{listing.title}</AppText>
 				<AppText style={styles.price}>${listing.price}</AppText>
@@ -23,7 +29,7 @@ export default function ListingDetailsScreen({ route }) {
 				</View>
 			</View>
 		</View>
-	)
+	);
 }
 
 const styles = StyleSheet.create({
@@ -47,4 +53,4 @@ const styles = StyleSheet.create({
 	userContainer: {
 		marginVertical: 40,
 	},
-})
+});
