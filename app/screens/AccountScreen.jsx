@@ -1,12 +1,13 @@
-import React from 'react'
-import { StyleSheet, View, FlatList } from 'react-native'
+import React, { useContext } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
 
-import ListItem from '../components/lists/ListItem'
-import Screen from '../components/Screen'
-import colors from '../config/colors'
-import Icon from '../components/Icon'
-import ListItemSeparator from '../components/lists/ListItemSeparator'
-import routes from '../navigation/routes'
+import ListItem from '../components/lists/ListItem';
+import Screen from '../components/Screen';
+import colors from '../config/colors';
+import Icon from '../components/Icon';
+import ListItemSeparator from '../components/lists/ListItemSeparator';
+import routes from '../navigation/routes';
+import AuthContext from '../auth/context';
 
 const menuItems = [
 	{
@@ -24,14 +25,16 @@ const menuItems = [
 		},
 		targetScreen: routes.MESSAGES,
 	},
-]
+];
 
 export default function AccountScreen({ navigation }) {
+	const { user, setUser } = useContext(AuthContext);
+
 	return (
 		<Screen style={styles.screen}>
 			<ListItem
-				title='Mosh Hamedani'
-				subTitle='programmingwithmosh@gmail.com'
+				title={user.name}
+				subTitle={user.email}
 				image={require('../assets/mosh.jpg')}
 			/>
 
@@ -57,9 +60,10 @@ export default function AccountScreen({ navigation }) {
 			<ListItem
 				title='Log Out'
 				IconComponent={<Icon name='logout' backgroundColor='#ffe66d' />}
+				onPress={() => setUser(null)}
 			/>
 		</Screen>
-	)
+	);
 }
 
 const styles = StyleSheet.create({
@@ -69,4 +73,4 @@ const styles = StyleSheet.create({
 	container: {
 		marginVertical: 40,
 	},
-})
+});
