@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import Screen from '../components/Screen';
 import { ErrorMessage, AppForm, AppFormField, SubmitButton } from '../components/forms';
 import authApi from '../api/auth';
+import authStorage from '../auth/storage';
 import AuthContext from '../auth/context';
 
 const validationSchema = Yup.object().shape({
@@ -23,6 +24,8 @@ function LoginScreen(props) {
 		setLoginFailed(false);
 		const user = jwtDecode(result.data);
 		authContext.setUser(user);
+		authStorage.storeToken(result.data);
+		console.log('testinmg');
 	};
 
 	return (
