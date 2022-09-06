@@ -9,5 +9,7 @@
 	"javascript.format.enable": false,
 	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
 	"editor.cursorSmoothCaretAnimation": false,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.fontFamily": "Fira Code",
+	"editor.cursorStyle": "line"
 }
