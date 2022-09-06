@@ -45,7 +45,8 @@
     "yup": "^0.32.11",
     "expo-secure-store": "~11.3.0",
     "expo-app-loading": "~2.1.0",
-    "expo-notifications": "~0.16.1"
+    "expo-notifications": "~0.16.1",
+    "expo-device": "~4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
