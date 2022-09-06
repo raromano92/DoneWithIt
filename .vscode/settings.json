@@ -11,5 +11,6 @@
 	"editor.cursorSmoothCaretAnimation": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fontFamily": "Fira Code",
-	"editor.cursorStyle": "line"
+	"editor.cursorStyle": "line",
+	"editor.tabSize": 2
 }
