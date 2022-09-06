@@ -88,9 +88,8 @@ function ListingEditScreen() {
 	const handleSubmit = async (listing, { resetForm }) => {
 		setProgress(0);
 		setUploadVisible(true);
-		const result = await listingsApi.addListing(
-			{ ...listing, location },
-			(progress) => setProgress(progress)
+		const result = await listingsApi.addListing({ ...listing, location }, (progress) =>
+			setProgress(progress)
 		);
 
 		if (!result.ok) {
@@ -119,11 +118,7 @@ function ListingEditScreen() {
 				onSubmit={handleSubmit}
 				validationSchema={validationSchema}>
 				<AppFormImagePicker name='images' />
-				<FormField
-					maxLength={255}
-					name='title'
-					placeholder='Title'
-				/>
+				<FormField maxLength={255} name='title' placeholder='Title' />
 				<FormField
 					keyboardType='numeric'
 					maxLength={8}
