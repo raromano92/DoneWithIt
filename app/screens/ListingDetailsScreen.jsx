@@ -14,7 +14,7 @@ function ListingDetailsScreen({ route }) {
 	return (
 		<KeyboardAvoidingView
 			behavior='position'
-			keyboardVerticalOffset={Platform.OS === 'android' ? 0 : 100}>
+			keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}>
 			<Image
 				style={styles.image}
 				preview={{ uri: listing.images[0].thumbnailUrl }}
@@ -31,7 +31,7 @@ function ListingDetailsScreen({ route }) {
 						subTitle='5 Listings'
 					/>
 				</View>
-				<ContactSellerForm listing={listing} />
+				{/* <ContactSellerForm listing={listing} /> */}
 			</View>
 		</KeyboardAvoidingView>
 	);

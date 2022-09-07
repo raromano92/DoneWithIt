@@ -8,7 +8,7 @@ import messagesApi from '../api/messages';
 
 function ContactSellerForm({ listing }) {
 	const handleSubmit = async ({ message }, { resetForm }) => {
-		Keyboard.dismiss();
+		// Keyboard.dismiss();
 
 		const result = await messagesApi.send(message, listing.id);
 
@@ -19,9 +19,14 @@ function ContactSellerForm({ listing }) {
 
 		resetForm();
 
-		Notifications.scheduleNotificationAsync({
-			title: 'Awesome!',
-			body: 'Your message was sent to the seller.',
+		await Notifications.scheduleNotificationAsync({
+			content: {
+				title: 'Awesome!',
+				body: 'Your message was sent to the seller.',
+			},
+			trigger: {
+				seconds: 2,
+			},
 		});
 	};
 
